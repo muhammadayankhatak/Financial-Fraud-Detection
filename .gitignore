@@ -1,0 +1,23 @@
+# Python bytecode & cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+env/
+venv/
+.venv/
+ENV/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# IDE / Editor settings
+.vscode/
+.idea/
+
+# Large datasets (optional: exclude if CSV file is over 100MB)
+# data/*.csv
+
+# Compiled models (optional: uncomment if your .pkl file is too large)
+# models/*.pkl

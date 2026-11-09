@@ -17,7 +17,10 @@ ENV/
 .idea/
 
 # Large datasets (optional: exclude if CSV file is over 100MB)
+# Large datasets
 data/*.csv
+Data/*.csv
+*.csv
 
 # Compiled models (optional: uncomment if your .pkl file is too large)
 models/*.pkl

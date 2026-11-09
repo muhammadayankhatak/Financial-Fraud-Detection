@@ -6,7 +6,7 @@ import pandas as pd
 class DataHandler:
 
     def __init__(self):
-        self.Data = "Data/Synthetic_Financial_datasets_log.csv"
+        self.Data = "data/Synthetic_Financial_datasets_log.csv"
 
     
 

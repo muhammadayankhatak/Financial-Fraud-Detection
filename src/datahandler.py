@@ -32,12 +32,12 @@ class DataHandler:
     
 
 
-    def inspect_data(self):
+    def inspect_data(self, df):
         """
         It Inspects Whole Data. Checks for Null Values. Duplicate Values and Also Displays No of Columns 
         and Total Rows and Columns.
         """
-        df = self.load_data()
+        # df = self.load_data()
 
         rows, columns = df.shape
         print(f"\n Total Rows: {rows}", end='\n')
@@ -51,16 +51,16 @@ class DataHandler:
 
 
 
-    def clean_data(self):
+    def clean_data(self, df):
         """
         Cleans the Data by removing duplicate and NUll Values. Also Checks for the File Not Empty.
         Returns the Data Frame.
         """
 
-        df = self.load_data()
+        # df = self.load_data()
 
 
-        if df.empty:
+        if df is None and df.empty:
             return None
 
 

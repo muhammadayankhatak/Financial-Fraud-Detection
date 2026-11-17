@@ -34,9 +34,13 @@ class DataVisualizer:
 
         plt.bar(['Non-Fraud','Fraud'], [counts.get(0, 0), counts.get(1, 0)], color=["green", "red"])
 
+        plt.yscale("log")
+
         plt.title("Fraud vs Non Fraud Transactions")
         plt.xlabel("Transaction Class")
         plt.ylabel("Number of transactions")
+
+        plt.savefig(os.path.join(self.output_dir, "class_distribution.png"))
 
         plt.show()
 
@@ -44,4 +48,5 @@ class DataVisualizer:
 
 
     def visualize_all(self, df):
+        """ Visualize all Functions 1 by 1. Calls all Function of Plotting of Data Visualizer Class. """
         self.plot_class_distribution(df)

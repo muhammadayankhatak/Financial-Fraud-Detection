@@ -68,10 +68,40 @@ class DataVisualizer:
         plt.savefig(os.path.join(self.output_dir, "transactions.png"))
 
         plt.show()
+
     
+    def plot_fraud_by_type(self, df):
+        """
+        Compares Fraud vs Non-Fraud transactions for each transaction type.
+        """
+
+        if df is None or df.empty:
+            print("No Data Available for Visualization.")
+            return
+
+        counts = df.groupby(['type', 'isFraud']).size().unstack(fill_value=0)
+
+        counts = counts.rename(columns={0: 'Non-Fraud', 1: 'Fraud'})
+
+        counts.plot(kind='bar',figsize=(10, 6),color=['green', 'red'])
+
+        plt.yscale("log")
+
+        plt.title("Fraud vs Non-Fraud by Transaction Type")
+        plt.xlabel("Transaction Type")
+        plt.ylabel("Number of Transactions")
+        plt.xticks(rotation=45)
+        plt.legend(title="Transaction Class")
+        plt.tight_layout()
+
+        plt.savefig(os.path.join(self.output_dir, "fraud_by_type.png"),dpi=300)
+
+        plt.show()
 
 
     def visualize_all(self, df):
         """ Visualize all Functions 1 by 1. Calls all Function of Plotting of Data Visualizer Class. """
         # self.plot_class_distribution(df)
-        self.plot_transaction_types(df)
+        # self.plot_transaction_types(df)
+
+        self.plot_fraud_by_type(df)

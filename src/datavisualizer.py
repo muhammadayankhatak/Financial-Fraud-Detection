@@ -98,10 +98,42 @@ class DataVisualizer:
 
         plt.show()
 
+    
+    def plot_amount_distribution(self, df):
+        """
+        Compares transaction amount distributions for Fraud and Non-Fraud transactions.
+        """
+
+        if df is None or df.empty:
+            print("No Data Available for Visualization.")
+            return
+
+        fraud = df[df['isFraud'] == 1]['amount']
+        non_fraud = df[df['isFraud'] == 0]['amount']
+
+        plt.figure(figsize=(10, 6))
+
+        plt.hist(non_fraud, bins=50, alpha=0.6, color='green', label='Non-Fraud', density=True)
+
+        plt.hist(fraud, bins=50, alpha=0.6, color='red', label='Fraud', density=True)
+
+        plt.title("Transaction Amount Distribution")
+        plt.xlabel("Transaction Amount")
+        plt.ylabel("Density")
+        plt.legend()
+
+        plt.tight_layout()
+
+        plt.savefig(os.path.join(self.output_dir, "amount_distribution.png"),dpi=300)
+
+        plt.show()
+
 
     def visualize_all(self, df):
         """ Visualize all Functions 1 by 1. Calls all Function of Plotting of Data Visualizer Class. """
         # self.plot_class_distribution(df)
         # self.plot_transaction_types(df)
 
-        self.plot_fraud_by_type(df)
+        # self.plot_fraud_by_type(df)
+
+        self.plot_amount_distribution(df)

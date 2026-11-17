@@ -5,26 +5,31 @@ import pandas as pd
 
 class DataHandler:
 
-    # def __init__(self):
-    #     self.Data = "data/Synthetic_Financial_datasets_log.csv"
+    def __init__(self, data_path):
+        self.data_path = data_path
 
     
 
-    def clean_data(self, Data):
+    def load_data(self):
 
-        df = pd.read_csv(self.Data)
-    
-        # print(f"First 30 Rows of Data: \n{df.head(30)}", end='\n\n')
-        # print(f"Null Values: {df.isnull().sum()}", end='\n\n')
-        # print(f"Duplicate Rows: {df.duplicated()}", end='\n\n')
+        if not self.data_path:
+            return None
+        
+        df = pd.read_csv(self.data_path)
 
-        df.dropna(inplace=True)
-        df.drop_duplicates(inplace=True)
+        if df.empty():
+            return None
 
-        df.reset_index(inplace=True, drop=True)
-
+        print("Successfull")
 
         return df
+    
+
+
+    # def inspect_data(self):
+
+    #     df = self.load_data()
+
 
 
         

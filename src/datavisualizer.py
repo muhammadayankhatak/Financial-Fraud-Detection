@@ -43,5 +43,5 @@ class DataVisualizer:
     
 
 
-def visualize_all(self, df):
-    self.plot_class_distribution(df)
+    def visualize_all(self, df):
+        self.plot_class_distribution(df)

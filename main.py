@@ -9,11 +9,9 @@ Data_Set = "data/Synthetic_Financial_datasets_log.csv"
 handler = DataHandler(Data_Set)
 
 
-# handler.inspect_data()
-
 data = handler.load_data()
+data = handler.clean_data(data)   # Store the returned cleaned data back into data (Variable).
 
-
-obj = DataVisualizer()
+obj = DataVisualizer(output_dir="reports")
 
 obj.visualize_all(data)

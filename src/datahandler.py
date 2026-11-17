@@ -17,7 +17,7 @@ class DataHandler:
         
         df = pd.read_csv(self.data_path)
 
-        if df.empty():
+        if df.empty:
             return None
 
         print("Successfull")
@@ -26,9 +26,19 @@ class DataHandler:
     
 
 
-    # def inspect_data(self):
+    def inspect_data(self):
 
-    #     df = self.load_data()
+        df = self.load_data()
+
+        rows, columns = df.shape
+        print(f"\n Total Rows: {rows}", end='\n')
+        print(f"Total Columns: {columns}", end='\n')
+        print(f"Columns Names: \n")
+        for cols in df.columns:
+            print(cols)
+        
+        print(f"\n\nNo of Missing Values: \n{df.isnull().sum()}", end='\n')
+        print(f"No of Duplicate Values: {df.duplicated().sum()}", end='\n')
 
 
 

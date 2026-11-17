@@ -24,7 +24,7 @@ class DataVisualizer:
         Function for Ploting the Fraud and not Fraud in Bar Chart.
         """
 
-        if df is None and df.empty:
+        if df is None or df.empty:
             print(" No Data Available for Visualization.")
             return
         
@@ -44,9 +44,34 @@ class DataVisualizer:
 
         plt.show()
 
+
+    
+    def plot_transaction_types(self, df):
+        """ Function for Ploting the Transactions Type in Bar Chart. """
+
+
+        if df is None or df.empty:
+            print(" No Data Available for Visualization.")
+            return
+        
+        counts = df['type'].value_counts()
+
+        plt.figure(figsize=(8, 5))
+
+        plt.bar(counts.index, counts.values, color='skyblue')
+
+        plt.title("Transaction Types Distribution")
+        plt.xlabel("Transaction Types")
+        plt.ylabel("Number of Transactions")
+
+
+        plt.savefig(os.path.join(self.output_dir, "transactions.png"))
+
+        plt.show()
     
 
 
     def visualize_all(self, df):
         """ Visualize all Functions 1 by 1. Calls all Function of Plotting of Data Visualizer Class. """
-        self.plot_class_distribution(df)
+        # self.plot_class_distribution(df)
+        self.plot_transaction_types(df)

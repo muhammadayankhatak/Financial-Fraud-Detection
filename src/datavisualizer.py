@@ -39,5 +39,9 @@ class DataVisualizer:
         plt.ylabel("Number of transactions")
 
         plt.show()
-        
+
     
+
+
+def visualize_all(self, df):
+    self.plot_class_distribution(df)
